@@ -13,16 +13,25 @@ public class InteractiveShell {
 
     private static final Logger logger = LogManager.getLogger("InteractiveShell");
 
+    private static InputReaderUtil inputReaderUtil;
+    private static ParkingSpotDAO parkingSpotDAO;
+    private static TicketDAO ticketDAO;
+    private static ParkingService parkingService;
+    
+    private static void init() {
+    	inputReaderUtil = new InputReaderUtil();
+        parkingSpotDAO = new ParkingSpotDAO();
+        ticketDAO = new TicketDAO();
+        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+	}
+    
     public static void loadInterface(){
+    	init();
         logger.info("App initialized!!!");
         System.out.println("Welcome to Parking System!");
 
         boolean continueApp = true;
-        InputReaderUtil inputReaderUtil = new InputReaderUtil();
-        ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();
-        TicketDAO ticketDAO = new TicketDAO();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-
+        
         while(continueApp){
             loadMenu();
             int option = inputReaderUtil.readSelection();
