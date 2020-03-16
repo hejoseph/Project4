@@ -50,7 +50,8 @@ public class FareCalculatorServiceTest {
         ticket = new Ticket();
         ticket.setVehicleRegNumber("ABCDEF");
         when(ticketDAO.countTicket(Mockito.any())).thenReturn(0);
-        fareCalculatorService = new FareCalculatorService(ticketDAO);
+//        fareCalculatorService = new FareCalculatorService(ticketDAO);
+        fareCalculatorService = new FareCalculatorService();
     }
 
     @Test
