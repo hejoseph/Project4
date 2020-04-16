@@ -30,7 +30,7 @@ public class ParkingService {
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
         parking = new HashMap<String,Integer>();
-        this.fareCalculatorService = new FareCalculatorService(ticketDAO);
+        this.fareCalculatorService = new FareCalculatorService();
         this.fareCalculatorService.setParking(parking);
     }
 
